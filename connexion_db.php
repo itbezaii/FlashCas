@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'site_db';
+$dbname = 'projet_news';
 $user = 'root';
 $password = '';
 
