@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un article</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
 
