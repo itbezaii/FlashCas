@@ -1,0 +1,227 @@
+/* ============================================
+   ESPACTU — Formulaires (ajouter / supprimer)
+   ============================================ */
+
+/* ===== CONTENEUR PRINCIPAL ===== */
+.form-container {
+    max-width: 750px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem 3rem;
+}
+
+/* ===== EN-TÊTE ===== */
+.form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #0f0f0f;
+}
+
+.form-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f0f0f;
+}
+
+.btn-retour {
+    font-size: 13px;
+    color: #6e6e6a;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid #e8e7e2;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-retour:hover {
+    border-color: #0f0f0f;
+    color: #0f0f0f;
+}
+
+/* ===== ALERTES ===== */
+.alert {
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 14px;
+}
+
+.alert-succes {
+    background: #ddf0e4;
+    color: #1a5c35;
+    border: 1px solid #a8d5b5;
+}
+
+.alert-succes a {
+    color: #1a5c35;
+    font-weight: 700;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.alert-erreur {
+    background: #fde8d8;
+    color: #8c3a1a;
+    border: 1px solid #f0b899;
+}
+
+.alert-erreur ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.alert-erreur li {
+    margin-bottom: 4px;
+}
+
+/* ===== GROUPES DE CHAMPS ===== */
+.form-group {
+    margin-bottom: 1.4rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #0f0f0f;
+    letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e8e7e2;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: #0f0f0f;
+    background: #fff;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0f0f0f;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #b0b0aa;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 200px;
+    line-height: 1.6;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236e6e6a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+/* Message d'erreur JS */
+.erreur-js {
+    display: block;
+    color: #c8371a;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* ===== BOUTONS ===== */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8e7e2;
+}
+
+.btn-submit {
+    background: #0f0f0f;
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.btn-submit:hover { background: #333; }
+
+.btn-danger {
+    background: #c8371a;
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-danger:hover { background: #a82c14; }
+
+.btn-annuler {
+    font-size: 14px;
+    color: #6e6e6a;
+    text-decoration: none;
+    padding: 11px 20px;
+    border: 1px solid #e8e7e2;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.btn-annuler:hover {
+    border-color: #0f0f0f;
+    color: #0f0f0f;
+}
+
+/* ===== APERÇU ARTICLE (supprimer.php) ===== */
+.article-apercu {
+    background: #f7f6f2;
+    border: 1px solid #e8e7e2;
+    border-left: 4px solid #c8371a;
+    border-radius: 0 6px 6px 0;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.apercu-titre {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #0f0f0f;
+}
+
+.apercu-desc {
+    font-size: 13px;
+    color: #6e6e6a;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.apercu-date {
+    font-size: 11px;
+    color: #6e6e6a;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}

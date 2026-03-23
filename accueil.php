@@ -57,10 +57,16 @@ $stmt = $pdo->prepare("
     SELECT articles.*, categories.nom AS categorie,
            utilisateurs.nom AS auteur
     FROM articles
+<<<<<<< HEAD
     JOIN categories ON articles.categorie_id = categories.id
     JOIN utilisateurs ON articles.auteur_id = utilisateurs.id
     $where_sql
     ORDER BY articles.date_publication DESC
+=======
+    LEFT JOIN categories ON articles.categorie_id = categories.id
+    LEFT JOIN utilisateurs ON articles.auteur_id = utilisateurs.id
+    ORDER BY date_publication DESC
+>>>>>>> a74d60d794e932a4794d5b2e1cb71a2e73f483d3
     LIMIT :limite OFFSET :offset
 ");
 foreach ($params as $key => $val) {
@@ -81,9 +87,14 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESPACTU — L'actualité en temps réel</title>
     <link rel="stylesheet" href="css/style.css">
+=======
+    <title>ESPACTU</title>
+    <link rel="stylesheet" href="style.css">
+>>>>>>> a74d60d794e932a4794d5b2e1cb71a2e73f483d3
 </head>
 <body>
  
@@ -122,6 +133,7 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
 </div>
  
 <div class="main">
+<<<<<<< HEAD
  
     <!-- Message de recherche actif -->
     <?php if ($recherche): ?>
@@ -156,6 +168,23 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
                             · <?= date('d/m/Y', strtotime($article['date_publication'])) ?>
                         </span>
                     </div>
+=======
+    <?php if (count($articles) === 0): ?>
+        <p style="color:#6B6B6B;font-size:14px;font-family:Arial,sans-serif;margin-bottom:2rem;">
+            Aucun article disponible pour le moment.
+        </p>
+    <?php endif; ?>
+
+    <?php foreach ($articles as $i => $article): ?>
+        <div class="list-card" onclick="location.href='articles/detail.php?id=<?= $article['id'] ?>'">
+            <div class="list-num"><?= str_pad($i + 1 + $offset, 2, '0', STR_PAD_LEFT) ?></div>
+            <div class="list-body">
+                <p class="list-title"><?= htmlspecialchars($article['titre']) ?></p>
+                <p class="list-desc"><?= htmlspecialchars($article['description']) ?></p>
+                <div class="list-meta">
+                    <span class="badge"><?= htmlspecialchars($article['categorie'] ?? 'Non classé') ?></span>
+                    <span>Par <?= htmlspecialchars($article['auteur'] ?? 'Inconnu') ?> · <?= date('d M Y', strtotime($article['date_publication'])) ?></span>
+>>>>>>> a74d60d794e932a4794d5b2e1cb71a2e73f483d3
                 </div>
             </div>
         <?php endforeach; ?>
