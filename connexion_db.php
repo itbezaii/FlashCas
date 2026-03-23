@@ -1,4 +1,5 @@
 <?php
+
 $host = 'localhost';
 $dbname = 'projet_news';
 $user = 'root';
@@ -13,6 +14,8 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
+    error_log("Erreur PDO : " . $e->getMessage());
+    die("Une erreur est survenue. Veuillez réessayer plus tard.");
 }
+
 ?>
