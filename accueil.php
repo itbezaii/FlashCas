@@ -141,6 +141,7 @@ $query_base = $base_url . 'accueil.php?' . (empty($query_params) ? '' : implode(
     <?php else: ?>
         <?php foreach ($articles as $i => $article): ?>
             <div class="list-card"
+
                  onclick="location.href='<?= $base_url ?>articles/detail.php?id=<?= (int)$article['id'] ?>'">
                 <div class="list-num">
                     <?= str_pad($i + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>
