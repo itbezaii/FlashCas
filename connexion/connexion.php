@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'role'   => $utilisateur['role'],
             ];
 
-            header('Location: /projetBackend/SITE-WEB/accueil.php');
+            header('Location: /projetBackend/FlashCas/accueil.php');
             exit;
         } else {
             $erreur = 'Login ou mot de passe incorrect.';

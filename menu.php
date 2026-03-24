@@ -2,7 +2,7 @@
 // menu.php — inclus dans le <body> de chaque page
 // Affiche la navbar en fonction du rôle de l'utilisateur connecté
 
-$base = '/projetBackend/Site-web/';
+$base = '/projetBackend/FlashCas/';
 
 // Rôle courant (null si visiteur non connecté)
 $role = $_SESSION['utilisateur']['role'] ?? null;
@@ -12,7 +12,7 @@ $pageCourante = $_SERVER['PHP_SELF'];
 ?>
 
 <nav>
-    <a href="<?= $base ?>accueil.php" class="nav-brand">📰 ESPACTU</a>
+    <a href="<?= $base ?>accueil.php" class="nav-brand">📰 FlashCas</a>
 
     <ul>
         <!-- Liens accessibles à tous -->

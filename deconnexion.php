@@ -21,6 +21,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Rediriger vers la page de connexion
-header('Location: /projetBackend/SITE-WEB/connexion/connexion.php');
+header('Location: /projetBackend/FlashCas/connexion/connexion.php');
 exit;
 ?>
