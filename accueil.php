@@ -141,7 +141,7 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
     <?php else: ?>
         <?php foreach ($articles as $i => $article): ?>
             <div class="list-card"
-                 onclick="location.href='articles/details.php?id=<?= (int)$article['id'] ?>'">
+                 onclick="location.href='articles/detail.php?id=<?= (int)$article['id'] ?>'">
                 <div class="list-num">
                     <?= str_pad($i + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>
                 </div>
