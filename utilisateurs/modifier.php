@@ -1,9 +1,10 @@
 <?php
 session_start();
-require '../connexion_db.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../connexion_db.php';
 
 if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['role'] !== 'administrateur') {
-    header('Location: ../connexion.php');
+    header('Location: ' . $base_url . 'connexion/connexion.php');
     exit;
 }
 

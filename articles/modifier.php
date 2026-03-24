@@ -1,9 +1,10 @@
 <?php
 session_start();
-require '../connexion_db.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../connexion_db.php';
 
 if (!isset($_SESSION['utilisateur']) || !in_array($_SESSION['utilisateur']['role'], ['editeur', 'administrateur'])) {
-    header('Location: /projetBackend/Site-Web/connexion/connexion.php');
+    header('Location: ' . $base_url . 'connexion/connexion.php');
     exit;
 }
 
@@ -114,7 +115,7 @@ $val_cat_id  = $_SERVER['REQUEST_METHOD'] === 'POST' ? (int)($_POST['categorie_i
         <h2>Modifier l'article</h2>
 
         <?php if ($succes): ?>
-            <div class="alert alert-succes">Article modifié. <a href="details.php?id=<?= $id ?>">Voir l'article</a></div>
+            <div class="alert alert-succes">Article modifié. <a href="detail.php?id=<?= $id ?>">Voir l'article</a></div>
         <?php endif; ?>
 
         <?php if (!empty($erreurs)): ?>
@@ -173,7 +174,7 @@ $val_cat_id  = $_SERVER['REQUEST_METHOD'] === 'POST' ? (int)($_POST['categorie_i
             </div>
 
             <div class="form-actions">
-                <a href="details.php?id=<?= $id ?>" class="btn btn-secondary">Annuler</a>
+                <a href="detail.php?id=<?= $id ?>" class="btn btn-secondary">Annuler</a>
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
             </div>
         </form>

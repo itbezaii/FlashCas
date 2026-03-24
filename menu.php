@@ -1,48 +1,40 @@
 <?php
 // menu.php — inclus dans le <body> de chaque page
-// Affiche la navbar en fonction du rôle de l'utilisateur connecté
+require_once __DIR__ . '/config.php';
 
-$base = '/projetBackend/FlashCas/';
-
-// Rôle courant (null si visiteur non connecté)
-$role = $_SESSION['utilisateur']['role'] ?? null;
-
-// Page active pour surligner le lien courant
+$role         = $_SESSION['utilisateur']['role'] ?? null;
 $pageCourante = $_SERVER['PHP_SELF'];
 ?>
 
 <nav>
-    <a href="<?= $base ?>accueil.php" class="nav-brand">📰 FlashCas</a>
+    <a href="<?= $base_url ?>accueil.php" class="nav-brand">📰 FlashCas</a>
 
     <ul>
-        <!-- Liens accessibles à tous -->
         <li>
-            <a href="<?= $base ?>accueil.php"
+            <a href="<?= $base_url ?>accueil.php"
                class="<?= strpos($pageCourante, 'accueil.php') !== false ? 'actif' : '' ?>">
                 Accueil
             </a>
         </li>
 
-        <!-- Liens réservés aux éditeurs et administrateurs -->
         <?php if ($role === 'editeur' || $role === 'administrateur'): ?>
             <li>
-                <a href="<?= $base ?>articles/ajouter.php"
-                   class="<?= strpos($pageCourante, 'articles/ajouter.php') !== false ? 'actif' : '' ?>">
+                <a href="<?= $base_url ?>articles/ajouter.php"
+                   class="<?= strpos($pageCourante, 'articles/ajouter') !== false ? 'actif' : '' ?>">
                     Nouvel article
                 </a>
             </li>
             <li>
-                <a href="<?= $base ?>categories/liste.php"
+                <a href="<?= $base_url ?>categories/liste.php"
                    class="<?= strpos($pageCourante, 'categories/') !== false ? 'actif' : '' ?>">
                     Catégories
                 </a>
             </li>
         <?php endif; ?>
 
-        <!-- Liens réservés aux administrateurs uniquement -->
         <?php if ($role === 'administrateur'): ?>
             <li>
-                <a href="<?= $base ?>utilisateurs/liste.php"
+                <a href="<?= $base_url ?>utilisateurs/liste.php"
                    class="<?= strpos($pageCourante, 'utilisateurs/') !== false ? 'actif' : '' ?>">
                     Utilisateurs
                 </a>
@@ -54,9 +46,9 @@ $pageCourante = $_SERVER['PHP_SELF'];
         <?php if ($role): ?>
             Bonjour, <span><?= htmlspecialchars($_SESSION['utilisateur']['prenom'] . ' ' . $_SESSION['utilisateur']['nom']) ?></span>
             &nbsp;·&nbsp;
-            <a href="<?= $base ?>deconnexion.php">Déconnexion</a>
+            <a href="<?= $base_url ?>deconnexion.php">Déconnexion</a>
         <?php else: ?>
-            <a href="<?= $base ?>connexion/connexion.php">Connexion</a>
+            <a href="<?= $base_url ?>connexion/connexion.php">Connexion</a>
         <?php endif; ?>
     </div>
 </nav>

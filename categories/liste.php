@@ -1,10 +1,11 @@
 <?php
 session_start();
-require '../connexion_db.php';
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../connexion_db.php';
 
 // Accès réservé aux éditeurs et administrateurs
 if (!isset($_SESSION['utilisateur']) || !in_array($_SESSION['utilisateur']['role'], ['editeur', 'administrateur'])) {
-    header('Location: ../connexion.php');
+    header('Location: ' . $base_url . 'connexion/connexion.php');
     exit;
 }
 

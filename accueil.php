@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/connexion_db.php';
 
 $articles_par_page = 5;
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
@@ -12,8 +14,6 @@ $cats_autorisees = ['Technologie', 'Sport', 'Politique', 'Education', 'Culture']
 if ($cat_filtre && !in_array($cat_filtre, $cats_autorisees)) {
     $cat_filtre = null;
 }
-
-require 'connexion_db.php';
 
 // Construction des conditions WHERE
 $conditions = [];
@@ -73,14 +73,14 @@ $articles = $stmt->fetchAll();
 $query_params = [];
 if ($cat_filtre) $query_params[] = "cat=" . urlencode($cat_filtre);
 if ($recherche)  $query_params[] = "q=" . urlencode($recherche);
-$query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '&') . 'page=';
+$query_base = $base_url . 'accueil.php?' . (empty($query_params) ? '' : implode('&', $query_params) . '&') . 'page=';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESPACTU — L'actualité en temps réel</title>
+    <title>FlashCas — L'actualité en temps réel</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -92,7 +92,7 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
     <p>Articles vérifiés · Mis à jour chaque jour</p>
 
     <!-- Barre de recherche -->
-    <form method="GET" action="accueil.php" class="search-form">
+    <form method="GET" action="<?= $base_url ?>accueil.php" class="search-form">
         <div class="search-bar">
             <input
                 type="text"
@@ -107,11 +107,11 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
 
     <!-- Filtres catégories -->
     <div class="cats">
-        <a href="accueil.php<?= $recherche ? '?q=' . urlencode($recherche) : '' ?>"
+        <a href="<?= $base_url ?>accueil.php<?= $recherche ? '?q=' . urlencode($recherche) : '' ?>"
            class="cat <?= !$cat_filtre ? 'active' : '' ?>">Tous</a>
 
         <?php foreach ($cats_autorisees as $c): ?>
-            <a href="accueil.php?cat=<?= urlencode($c) ?><?= $recherche ? '&q=' . urlencode($recherche) : '' ?>"
+            <a href="<?= $base_url ?>accueil.php?cat=<?= urlencode($c) ?><?= $recherche ? '&q=' . urlencode($recherche) : '' ?>"
                class="cat <?= $cat_filtre === $c ? 'active' : '' ?>">
                 <?= htmlspecialchars($c) ?>
             </a>
@@ -127,7 +127,7 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
             <?= $total ?> résultat(s) pour
             <strong>"<?= htmlspecialchars($recherche) ?>"</strong>
             <?= $cat_filtre ? ' dans <strong>' . htmlspecialchars($cat_filtre) . '</strong>' : '' ?>
-            — <a href="accueil.php">Réinitialiser</a>
+            — <a href="<?= $base_url ?>accueil.php">Réinitialiser</a>
         </p>
     <?php endif; ?>
 
@@ -141,7 +141,7 @@ $query_base = '?' . (empty($query_params) ? '' : implode('&', $query_params) . '
     <?php else: ?>
         <?php foreach ($articles as $i => $article): ?>
             <div class="list-card"
-                 onclick="location.href='articles/details.php?id=<?= (int)$article['id'] ?>'">
+                 onclick="location.href='<?= $base_url ?>articles/detail.php?id=<?= (int)$article['id'] ?>'">
                 <div class="list-num">
                     <?= str_pad($i + 1 + $offset, 2, '0', STR_PAD_LEFT) ?>
                 </div>
